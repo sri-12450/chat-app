@@ -9,15 +9,22 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Serve React build
-app.use(express.static(path.join(__dirname, "build")));
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
+// ----- Example API route ----- //
+app.get("/api/test", (req, res) => {
+  res.json({ message: "API is working!" });
 });
 
-const server = http.createServer(app);
+// ----- Serve React build ----- //
+const buildPath = path.join(__dirname, "build");
+app.use(express.static(buildPath));
 
+// Catch-all route for React frontend
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(buildPath, "index.html"));
+});
+
+// ----- Socket.io setup ----- //
+const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
     origin: "*",
@@ -61,5 +68,6 @@ io.on("connection", (socket) => {
   }
 });
 
+// ----- Start Server ----- //
 const PORT = process.env.PORT || 5000;
-server.listen(PORT, () => console.log("Server running on port", PORT));
+server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
