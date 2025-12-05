@@ -1,0 +1,317 @@
+/* ===== CHAT CONTAINER ===== */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    max-width: 800px;
+    margin: 40px auto;
+    background: linear-gradient(145deg, #f5f7fa, #e8ecf3);
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    font-family: "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    transition: all 0.3s ease-in-out;
+  }
+  /* Ensure emojis render correctly */
+body, input, button, .message, .my-message, .other-message {
+  font-family: "Segoe UI Emoji", "Segoe UI Symbol", "Apple Color Emoji", "Noto Color Emoji", sans-serif;
+}
+
+  /* ===== HEADER ===== */
+  .chat-header {
+    background: linear-gradient(90deg, #6a11cb, #2575fc);
+    color: white;
+    padding: 14px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  
+  /* ===== MESSAGES AREA ===== */
+  .messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background: linear-gradient(180deg, #fafbfc, #eef1f6);
+  }
+  
+  /* Each message bubble */
+  .message {
+    margin-bottom: 14px;
+    padding: 12px 16px;
+    border-radius: 16px;
+    max-width: 70%;
+    word-wrap: break-word;
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    animation: slideIn 0.3s ease;
+    font-family: "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  }
+  
+  /* Hover glow animation */
+  .message:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+  
+  /* Your messages */
+  .my-message {
+    background: linear-gradient(135deg, #b2fefa, #0ed2f7);
+    align-self: flex-end;
+    margin-left: auto;
+    color: #00344d;
+  }
+  
+  /* Other user's messages */
+  .other-message {
+    background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+    align-self: flex-start;
+    margin-right: auto;
+    color: #3a0057;
+  }
+  
+  /* Info (username + time) */
+  .message-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.6);
+  }
+  
+  /* Typing effect */
+  .typing-indicator {
+    font-style: italic;
+    color: #777;
+    margin: 10px 0 0 12px;
+    text-align: left;
+    font-size: 14px;
+    animation: blink 1.2s infinite;
+  }
+  
+  /* ===== INPUT AREA ===== */
+  .input-area {
+    display: flex;
+    padding: 14px;
+    background: #fff;
+    border-top: 1px solid #ddd;
+  }
+  
+  .input-area input {
+    flex: 1;
+    padding: 12px 16px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 15px;
+    transition: all 0.3s;
+    background: #f9fafc;
+  }
+  
+  .input-area input:focus {
+    border-color: #6a11cb;
+    box-shadow: 0 0 6px rgba(106, 17, 203, 0.3);
+  }
+  
+  .input-area button {
+    margin-left: 10px;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+  }
+  
+  .input-area button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(37, 117, 252, 0.4);
+  }
+  
+  /* ===== EMOJI PICKER ===== */
+  .emoji-picker {
+    position: absolute;
+    bottom: 70px;
+    right: 25px;
+    z-index: 1000;
+  }
+  
+  .emoji-picker-react {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+    border-radius: 16px !important;
+    background: linear-gradient(145deg, #f5f7fa, #e8ecf3) !important;
+  }
+  
+  .emoji-picker-react .emoji-button:hover {
+    background: linear-gradient(135deg, #6a11cb, #2575fc) !important;
+    border-radius: 12px !important;
+  }
+  
+  /* ===== ANIMATIONS ===== */
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes blink {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+  /* Modern emoji size and alignment */
+img.emoji {
+  height: 1.3em;
+  width: 1.3em;
+  margin: 0 2px;
+  vertical-align: -0.25em;
+}
+
+/* ===== MODERN EMOJI STYLING ===== */
+
+/* Ensures emojis look clean, modern, and consistent */
+body, input, button, .message, .my-message, .other-message {
+  font-family: 
+    "Apple Color Emoji", 
+    "Noto Color Emoji", 
+    "Segoe UI Emoji", 
+    "Segoe UI Symbol", 
+    "Twemoji Mozilla", 
+    sans-serif;
+  font-feature-settings: "kern";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Better alignment and crisp display for emojis */
+img.emoji, .emoji {
+  height: 1.4em;
+  width: 1.4em;
+  margin: 0 3px;
+  vertical-align: -0.25em;
+  image-rendering: -webkit-optimize-contrast;
+  transition: transform 0.15s ease;
+}
+
+/* Subtle hover zoom effect for interactive feel */
+.emoji:hover {
+  transform: scale(1.2);
+}
+
+/* Slight background lift for emojis in picker */
+.emoji-picker-react .emoji-button {
+  border-radius: 10px !important;
+  transition: all 0.2s ease !important;
+}
+
+.emoji-picker-react .emoji-button:hover {
+  background: linear-gradient(135deg, #6a11cb, #2575fc) !important;
+  transform: scale(1.1);
+}
+
+/* Improve emoji picker overall look */
+.emoji-picker-react {
+  background: linear-gradient(145deg, #f7f9fc, #e4e8f0) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12) !important;
+  padding: 8px !important;
+}
+/* ===== MODERN EMOJI BUTTON ===== */
+.emoji-toggle-btn {
+  position: relative;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(106, 17, 203, 0.25);
+}
+
+/* Emoji icon appearance */
+.emoji-toggle-btn span {
+  font-size: 24px;
+  transition: transform 0.25s ease;
+}
+
+/* Hover glow + zoom */
+.emoji-toggle-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(37, 117, 252, 0.4);
+}
+
+.emoji-toggle-btn:hover span {
+  transform: scale(1.25);
+}
+
+/* Active (when picker is open) */
+.emoji-toggle-btn.active {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: #fff;
+  box-shadow: 0 0 15px rgba(37, 117, 252, 0.5);
+}
+/* === Stylish Clear Chat Button === */
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+
+.clear-chat-container {
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.3s ease;
+}
+
+.chat-header:hover .clear-chat-container {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* === Modern Clear Chat Button === */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.clear-chat-btn {
+  background: linear-gradient(90deg, #ff416c, #ff4b2b);
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 64, 108, 0.4);
+}
+
+.clear-chat-btn:hover {
+  background: linear-gradient(90deg, #ff4b2b, #ff416c);
+  transform: scale(1.05);
+  box-shadow: 0 0 18px rgba(255, 64, 108, 0.6);
+}
+
+.clear-chat-btn:active {
+  transform: scale(0.97);
+  box-shadow: 0 0 5px rgba(255, 64, 108, 0.4);
+}
