@@ -19,7 +19,7 @@ const buildPath = path.join(__dirname, "build");
 app.use(express.static(buildPath));
 
 // ----- Catch-all route for React frontend (Render-safe) ----- //
-app.get('/:anyPath(*)', (req, res) => {
+app.get('/', (req, res) => {
   res.sendFile(path.join(buildPath, 'index.html'));
 });
 
