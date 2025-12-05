@@ -18,8 +18,8 @@ app.get("/api/test", (req, res) => {
 const buildPath = path.join(__dirname, "build");
 app.use(express.static(buildPath));
 
-// Catch-all route for React frontend
-app.get("/*", (req, res) => {
+// ----- Catch-all route for React frontend ----- //
+app.get('/:path(.*)', (req, res) => {
   res.sendFile(path.join(buildPath, "index.html"));
 });
 
@@ -71,3 +71,4 @@ io.on("connection", (socket) => {
 // ----- Start Server ----- //
 const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
