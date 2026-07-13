@@ -5,7 +5,7 @@ import Chat from "./Chat";
 import "./App.css";
 
 // Single socket connection for the whole app
-const socket = io.connect("https://your-backend-name.onrender.com");
+const socket = io("https://chat-app-3-itas.onrender.com");
 
 function App() {
   const [showChat, setShowChat] = useState(false);
